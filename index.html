@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f3ef">
+  <title>Let e Ju — Birthday Party</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <img class="child-photo child-one" src="assets/foto-infancia-1.jpg" alt="Foto de infância com chapéu de festa">
+      <img class="child-photo child-two" src="assets/foto-infancia-2.jpg" alt="Foto de infância sorrindo com chapéu de festa">
+      <img class="party-hat" src="assets/chapeu.png" alt="Ilustração de chapéu de aniversário">
+      <div class="hero-copy">
+        <p class="eyebrow">VOCÊ ESTÁ CONVIDADO(A)!</p>
+        <img class="title-art" src="assets/titulo-22.png" alt="22 — Let e Ju">
+        <img class="birthday-art" src="assets/birthday-party.png" alt="Birthday Party">
+        <div class="event-details">
+          <div><strong>08 JAN 2027</strong><span>14h – 21h</span></div>
+          <div class="address"><strong>Recanto dos Pássaros</strong><span>Rua Pinto D’água, 266</span></div>
+        </div>
+        <a class="primary-btn" href="#rsvp">CONFIRMAR PRESENÇA <span>♡</span></a>
+      </div>
+      <img class="cake-art" src="assets/bolo.png" alt="Ilustração de bolo de aniversário">
+    </div>
+  </header>
+
+  <main>
+    <section class="intro section-wrap">
+      <span class="mini-star">✦</span>
+      <h1>Vai ser ainda melhor<br><em>com você!</em></h1>
+      <p>Preencha sua confirmação e, se quiser, escolha até duas pessoas para irem com você. Depois, procure seu lugar na nossa mesa! 💗</p>
+    </section>
+
+    <section id="rsvp" class="rsvp-card section-wrap">
+      <div class="section-kicker">RSVP · CONFIRMAÇÃO</div>
+      <h2>Você vem comemorar?</h2>
+      <form id="rsvp-form">
+        <label class="field-label" for="guest-name">Seu nome completo</label>
+        <input id="guest-name" name="name" required maxlength="70" placeholder="Como devemos te chamar?">
+        <label class="field-label" for="guest-phone">WhatsApp <small>(opcional)</small></label>
+        <input id="guest-phone" name="phone" inputmode="tel" placeholder="(00) 00000-0000">
+        <div class="field-label">Você vai comparecer?</div>
+        <div class="choice-row">
+          <label class="choice"><input type="radio" name="attending" value="yes" checked> <span>Sim, estarei lá!</span></label>
+          <label class="choice"><input type="radio" name="attending" value="no"> <span>Não poderei ir</span></label>
+        </div>
+        <div id="attendee-fields">
+          <div class="field-label companion-heading">Vai levar alguém com você? <small>(até 2 pessoas)</small></div>
+          <div class="companion-count">
+            <button type="button" class="count-btn active" data-count="0">Só eu</button>
+            <button type="button" class="count-btn" data-count="1">+ 1 pessoa</button>
+            <button type="button" class="count-btn" data-count="2">+ 2 pessoas</button>
+          </div>
+          <div id="companions"></div>
+          <p class="photo-tip">📸 Cada pessoa terá uma cadeira na mesa. Adicione uma foto para aparecer no mural de convidados.</p>
+        </div>
+        <button class="submit-btn" type="submit" id="submit-btn">ENVIAR CONFIRMAÇÃO ✨</button>
+        <p id="form-message" class="form-message" role="status"></p>
+      </form>
+    </section>
+
+    <section class="table-section section-wrap" id="mesa">
+      <div class="section-kicker">NOSSA MESA</div>
+      <h2>Olha quem já confirmou! 🎉</h2>
+      <p class="table-intro">Cada lugar representa uma pessoa confirmada. A mesa tem espaço para 30 convidados.</p>
+      <div class="table-stage">
+        <div class="seats" id="seats" aria-live="polite"></div>
+        <div class="round-table"><span>LET E JU</span><small>22 · BIRTHDAY</small><b>♡</b></div>
+      </div>
+      <div class="table-legend"><span class="legend-dot"></span> <span id="seat-count">0 de 30 lugares preenchidos</span></div>
+      <p class="table-note">As fotos e os nomes aparecem aqui depois que a confirmação é enviada.</p>
+    </section>
+  </main>
+
+  <footer>Feito com carinho para comemorar nossos 22 anos. <span>♡</span></footer>
+
+  <dialog id="success-dialog" class="success-dialog">
+    <button class="dialog-close" type="button" aria-label="Fechar">×</button>
+    <div class="success-sparkle">✦</div>
+    <h2>UHUUUL! 🥳</h2>
+    <p id="success-text">Sua presença foi confirmada!</p>
+    <button type="button" class="submit-btn" id="dialog-ok">Que venha a festa! 💗</button>
+  </dialog>
+</body>
+</html>
